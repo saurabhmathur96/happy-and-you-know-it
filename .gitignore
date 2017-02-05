@@ -1,0 +1,8 @@
+data/fer2013/
+models/backup
+
+logs
+
+*.pyc
+
+venv

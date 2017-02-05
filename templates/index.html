@@ -1,0 +1,94 @@
+<!doctype html>
+
+<html>
+    <head>
+        
+    </head>
+
+    <body>
+
+        <div id="camera"></div>
+        
+        <button id="snap_button"> snap </button>
+
+        <div id="results"></div>
+
+        <div id="prediction">
+            <table>
+                <tr>
+                    <th>Anger</th> <td id="Angry"></td>
+                </tr>
+
+                <tr>
+                    <th>Disgust</th> <td id="Disgust"></td>
+                </tr>
+
+                <tr>
+                    <th>Fear</th> <td id="Fear"></td>
+                </tr>
+
+                <tr>
+                    <th>Happiness</th> <td id="Happy"></td>
+                </tr>
+
+                <tr>
+                    <th>Sadness</th> <td id="Sad"></td>
+                </tr>
+
+                <tr>
+                    <th>Surprise</th> <td id="Surprise"></td>
+                </tr>
+
+                <tr>
+                    <th>Neutral</th> <td id="Neutral"></td>
+                </tr>                
+            </table>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.18/webcam.js" integrity="sha256-DrW2nWeSzECQXZQg6WEE2VL9TGumizCwJwrTUwOJT+E=" crossorigin="anonymous"></script>
+        <script language="JavaScript">
+            Webcam.set({
+                width: 320,
+                height: 240,
+                crop_width: 48,
+			    crop_height: 48,
+                dest_width: 64,
+                dest_height: 48,
+                image_format: "png",
+                jpeg_quality: 100
+            });
+            Webcam.attach("#camera");
+            function take_snapshot() {
+			// take snapshot and get image data
+                Webcam.snap( function(data_uri) {
+                    // display results in page
+                    document.getElementById("results").innerHTML = 
+                        "<h2> Image captured </h2>" + 
+                        '<img src="'+data_uri+'"/>';
+                    var xhr = new XMLHttpRequest();
+                    xhr.open("POST", "/classify");
+                    xhr.setRequestHeader("Content-Type", "application/json");
+                    xhr.onload = function() {
+                        if (xhr.status === 200) {
+                            var response = JSON.parse(xhr.responseText);
+                            var emotions = ["Angry", "Disgust", "Fear", "Happy", "Sad", "Surprise", "Neutral"];
+                            for(var i=0; i<emotions.length; i++) {
+                                document.getElementById(emotions[i]).textContent = Math.round(100 * response["prediction"][emotions[i]], 2) + "%";
+                            }
+                            
+                        }
+                    };
+                    xhr.send(JSON.stringify({
+                        image: data_uri
+                    }));
+                } );
+
+                
+            }
+
+            document.getElementById("snap_button").addEventListener("click", take_snapshot);
+	    </script>
+
+    </body>
+
+</html>
