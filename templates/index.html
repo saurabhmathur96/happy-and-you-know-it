@@ -2,48 +2,75 @@
 
 <html>
     <head>
-        
+         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/purple/pace-theme-minimal.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.1.0/milligram.min.css" />
+        <style>
+            #snap_button {
+                margin-top: 10px;
+                width: 100%
+            }
+            #button_row {
+                width: 100%;
+                max-width: 240px;
+            }
+            
+        </style>
     </head>
 
     <body>
+        <div class="container">
+            <h1> Facial Emotion Recognition </h1>
+            <div class="row">
+                
+                <div class="column">
+                    <div class="row"> <div id="camera"></div> </div>
+                    <div class="row" id="button_row"> <button id="snap_button" class="button button-outline"> snap </button> </div>
+                </div>
 
-        <div id="camera"></div>
-        
-        <button id="snap_button"> snap </button>
+                <div class="column">
+                    <div id="results"></div>
 
-        <div id="results"></div>
+                    <div id="prediction">
+                        <table>
+                            <tr>
+                                <th>Anger</th> <td id="Angry"></td>
+                            </tr>
 
-        <div id="prediction">
-            <table>
-                <tr>
-                    <th>Anger</th> <td id="Angry"></td>
-                </tr>
+                            <tr>
+                                <th>Disgust</th> <td id="Disgust"></td>
+                            </tr>
 
-                <tr>
-                    <th>Disgust</th> <td id="Disgust"></td>
-                </tr>
+                            <tr>
+                                <th>Fear</th> <td id="Fear"></td>
+                            </tr>
 
-                <tr>
-                    <th>Fear</th> <td id="Fear"></td>
-                </tr>
+                            <tr>
+                                <th>Happiness</th> <td id="Happy"></td>
+                            </tr>
 
-                <tr>
-                    <th>Happiness</th> <td id="Happy"></td>
-                </tr>
+                            <tr>
+                                <th>Sadness</th> <td id="Sad"></td>
+                            </tr>
 
-                <tr>
-                    <th>Sadness</th> <td id="Sad"></td>
-                </tr>
+                            <tr>
+                                <th>Surprise</th> <td id="Surprise"></td>
+                            </tr>
 
-                <tr>
-                    <th>Surprise</th> <td id="Surprise"></td>
-                </tr>
-
-                <tr>
-                    <th>Neutral</th> <td id="Neutral"></td>
-                </tr>                
-            </table>
+                            <tr>
+                                <th>Neutral</th> <td id="Neutral"></td>
+                            </tr>                
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
+        
+        
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.18/webcam.js" integrity="sha256-DrW2nWeSzECQXZQg6WEE2VL9TGumizCwJwrTUwOJT+E=" crossorigin="anonymous"></script>
         <script language="JavaScript">
