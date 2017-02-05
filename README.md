@@ -1,6 +1,6 @@
 # happy-and-you-know-it
 
-Facial Emotion Recogniton using deep residual learning.
+Facial Emotion Recognition using deep residual learning.
 
 
 ## Motivation
