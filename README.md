@@ -1,6 +1,6 @@
 # happy-and-you-know-it
 
-Facial Emotion Recogniton using deep convolutional networks.
+Facial Emotion Recogniton using deep residual learning.
 
 
 ## Motivation
@@ -9,6 +9,8 @@ This is my attempt to have a machine learn facial expressions from an image.
 (Something I seem to have a hard time doing)
 
 ## Accuracy
+
+The model provided in models/resnet20.h5 is a ResNet with 20 layers.
 
 - Training
 
