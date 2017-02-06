@@ -23,6 +23,10 @@ The model provided in models/resnet20.h5 is a ResNet with 20 layers.
        Accuracy = 66.48 %
        
        Loss = 0.9397
+       
+ - Confusion matrix on Validation data
+       
+      ![confusion matrix](./confusion.png)
 
 ## Installation
 
@@ -56,3 +60,12 @@ Challenges in Representation Learning: Facial Expression Recognition Challenge (
 > The data consists of 48x48 pixel grayscale images of faces. The faces have been automatically registered so that the face is more or less centered and occupies about the same amount of space in each image. The task is to categorize each face based on the emotion shown in the facial expression in to one of seven categories (0=Angry, 1=Disgust, 2=Fear, 3=Happy, 4=Sad, 5=Surprise, 6=Neutral).
 
 The dataset is available for download on [Kaggle](https://www.kaggle.com/c/challenges-in-representation-learning-facial-expression-recognition-challenge/data).
+
+
+## Model Summary
+
+
+ResNet20 model summary
+
+
+![ResNet20 model summary](./model.png)
